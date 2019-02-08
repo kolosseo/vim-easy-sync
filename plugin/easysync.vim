@@ -9,7 +9,7 @@
 " Author: Jacopo Pace (jacopo.im)
 " License: MIT
 
-function! easySync#GetConf()
+function! easysync#GetConf()
   let conf = {}
 
   let l:configpath = expand('%:p:h')
@@ -53,8 +53,8 @@ function! easySync#GetConf()
   return conf
 endfunction
 
-function! easySync#DownloadAll()
-  let conf = easySync#GetConf()
+function! easysync#DownloadAll()
+  let conf = easysync#GetConf()
 
   if has_key(conf, 'host')
     let exclude = printf('%s.exclude', conf['local'])
@@ -80,8 +80,8 @@ function! easySync#DownloadAll()
   endif
 endfunction
 
-function! easySync#DownloadFile()
-  let conf = easySync#GetConf()
+function! easysync#DownloadFile()
+  let conf = easysync#GetConf()
 
   if has_key(conf, 'host')
     let action = printf('get %s %s', conf['remotepath'], conf['localpath'])
@@ -102,8 +102,8 @@ function! easySync#DownloadFile()
   endif
 endfunction
 
-function! easySync#UploadFile()
-  let conf = easySync#GetConf()
+function! easysync#UploadFile()
+  let conf = easysync#GetConf()
 
   if has_key(conf, 'host')
     let action = printf('put %s %s', conf['localpath'], conf['remotepath'])
@@ -122,8 +122,8 @@ function! easySync#UploadFile()
   endif
 endfunction
 
-function! easySync#UploadFolder()
-  let conf = easySync#GetConf()
+function! easysync#UploadFolder()
+  let conf = easysync#GetConf()
 
   " execute "! echo " . file
   " let conf['localpath'] = expand('%:p')
@@ -160,13 +160,13 @@ function! easySync#UploadFolder()
   endif
 endfunction
 
-command! EdownloadAll call easySync#DownloadAll()
-command! Edownload call easySync#DownloadFile()
-command! Eupload call easySync#UploadFile()
-command! EuploadFolder call easySync#UploadFolder()
+command! EdownloadAll call easysync#DownloadAll()
+command! Edownload call easysync#DownloadFile()
+command! Eupload call easysync#UploadFile()
+command! EuploadFolder call easysync#UploadFolder()
 
 nmap <leader>esd :Edownload<Esc>
 nmap <leader>esu :Eupload<Esc>
 nmap <leader>esf :EuploadFolder<Esc>
-autocmd BufWritePost * :call easySync#UploadFile()
-"autocmd BufReadPre * :call easySync#DownloadFile()
+autocmd BufWritePost * :call easysync#UploadFile()
+"autocmd BufReadPre * :call easysync#DownloadFile()
