@@ -63,7 +63,7 @@ function! easysync#DownloadAll()
         let exclude_action = printf('--exclude-from=%s', exclude)
     endif
 
-    let cmd = printf('rsync -vrtplze ssh --progress --stats --delete %s --exclude=".easync" --exclude=".exclude" --exclude=".git*" %s@%s:%s %s', exclude_action, conf['user'], conf['host'], conf['remote'], conf['local'])
+    let cmd = printf('rsync -vrtplze "ssh -p %s" --progress --stats --delete %s --exclude=".easync" --exclude=".exclude" --exclude=".git*" %s@%s:%s %s', conf['port'], exclude_action, conf['user'], conf['host'], conf['remote'], conf['local'])
     echo cmd
 
     if conf['confirm_download'] == 1
