@@ -1,6 +1,6 @@
 " Title: easy-sync
 " Description: Upload, download and automagically sync files just after ':w' through sftp and rsync
-" Usage: :Eupload and :Hdownload
+" Usage: :Eupload and :Edownload
 "        By default mapped to
 "        <leader>esd (easy-sync download) and
 "        <leader>esu (easy-sync upload)
