@@ -8,10 +8,10 @@ Usage:
 ------
 First of all:
 - you need to have `rsync` and a `ssh` client installed on your machine;
-- you have to create a config file called `.hsftp` in your project directory.
+- you have to create a config file called `.easync` in your project directory.
 - the server you connect needs to have a listening `ssh` connection.
 
-When uploading/downloading, this plugin searches backwards for the `.hsftp` file.
+When uploading/downloading, this plugin searches backwards for the `.easync` file.
 So, if the edited file is e.g. `/test/dir/file.txt` and the config file is `/test/.hsftp`, it will upload/download as `dir/file.txt`.
 
 The config file should be structured like this (amount of spaces doesn't matter):
@@ -24,37 +24,37 @@ Be carefull to **ALWAYS** put the trailing "/" (slash) at the end of each remote
     confirm_download 0
     confirm_upload 0
 
-The "pass" field is not used anymore.
-Only a key-file connection is contemplated, actually.
+The "pass" field (password) is not used actually.
+Only a ssh connection with key-file is contemplated.
 
 ### Exclude files
-To avoid downloading specific files (only works on `HdownloadAll`), you can create the `.exclude` file, with the list of file patterns to exclude.
+To avoid downloading specific files (only works on `EdownloadAll`), you can create the `.exclude` file, with the list of file patterns to exclude.
 The syntax to use is the same of a simple `exclude-file` as explained in `man rsync`.
 If you don't specify any, the deafult excluded files are just the following:
 `.git*`
-`.hsftp`
+`.easync`
 `.exclude`
 
 ### Commands
-    :Hdownload
+    :Edownload
 Downloads current file from remote path
 
-    :HdownloadAll
+    :EdownloadAll
 Downloads current directory from remote path
 
-    :Hupload
+    :Eupload
 Uploads current file to remote path
 
-    :HuploadFolder
+    :EuploadFolder
 Uploads current folder of current buffer to remote path
 
 
 ### Mappings
-    <leader>hsd
-Calls :Hdownload
+    <leader>esd
+Calls :Edownload
 
-    <leader>hsu
-Calls :Hupload
+    <leader>esu
+Calls :Eupload
 
-    <leader>hsf
-Calls :HuploadFolder
+    <leader>esf
+Calls :EuploadFolder
