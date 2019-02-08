@@ -1,4 +1,4 @@
-vim-my-sync
+vim-easy-sync
 =========
 
 Fork from '[vim-hsftp](https://github.com/hesselbom/vim-hsftp/)' Vim plugin:
@@ -19,6 +19,7 @@ Be carefull to **ALWAYS** put the trailing "/" (slash) at the end of each remote
 
     host   1.1.1.1
     user   username
+    pass   ''
     port   22
     remote /var/www/
     confirm_download 0
